@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Pawfect Match...'
-                sh 'python --version'  // Check Flask setup
+                bat 'python --version'  // Checks Python (Windows-friendly)
             }
         }
         stage('Test') {
@@ -19,4 +19,5 @@ pipeline {
         }
     }
 }
+
 
