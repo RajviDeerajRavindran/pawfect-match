@@ -1,0 +1,788 @@
+[
+    {
+        "id": 1,
+        "name": "Mittens",
+        "type": "Dog",
+        "breed": "Bulldog",
+        "age": "6 years",
+        "gender": "Male",
+        "color": "Black",
+        "weight": "19.1 kg",
+        "location": "Bangalore",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "Needs regular vet checkups",
+        "description": "A lovely dog looking for a caring home.",
+        "image": "images/mittens.jpg",
+        "status": "adopted",
+        "owner": {
+            "name": "Owner1",
+            "contact": "owner1@example.com",
+            "phone": "+91-9337260476"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Luna",
+        "type": "Cat",
+        "breed": "Siamese",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "7 kg",
+        "location": "Delhi",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly cat looking for a caring family.",
+        "image": "images/pet2.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner2",
+            "contact": "owner2@example.com",
+            "phone": "+91-9000000002"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Finch",
+        "type": "Lovebird",
+        "breed": "Fischer's",
+        "age": "4 years",
+        "gender": "Female",
+        "color": "Golden",
+        "weight": "1.1 kg",
+        "location": "Hyderabad",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly lovebird looking for a caring family.",
+        "image": "images/pet3.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner3",
+            "contact": "owner3@example.com",
+            "phone": "+91-9000000003"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Pickles",
+        "type": "Dog",
+        "breed": "Pug",
+        "age": "5 years",
+        "gender": "Male",
+        "color": "Grey",
+        "weight": "9 kg",
+        "location": "Mumbai",
+        "vaccinated": true,
+        "neutered": true,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly dog looking for a caring family.",
+        "image": "images/pet4.jpg",
+        "status": "adopted",
+        "owner": {
+            "name": "Owner4",
+            "contact": "owner4@example.com",
+            "phone": "+91-9000000004"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Alice",
+        "type": "Cat",
+        "breed": "Sphynx",
+        "age": "6 years",
+        "gender": "Female",
+        "color": "Orange",
+        "weight": "10 kg",
+        "location": "Kolkata",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "Needs daily medication",
+        "description": "A friendly cat looking for a caring family.",
+        "image": "images/pet5.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner5",
+            "contact": "owner5@example.com",
+            "phone": "+91-9000000005"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Chinnu",
+        "type": "Lovebird",
+        "breed": "Fischer's",
+        "age": "7 years",
+        "gender": "Male",
+        "color": "White",
+        "weight": "0.1 kg",
+        "location": "Bangalore",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly lovebird looking for a caring family.",
+        "image": "images/pet6.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner6",
+            "contact": "owner6@example.com",
+            "phone": "+91-9000000006"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Roberto",
+        "type": "Dog",
+        "breed": "Labrador",
+        "age": "8 years",
+        "gender": "Female",
+        "color": "Black",
+        "weight": "12 kg",
+        "location": "Chennai",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly dog looking for a caring family.",
+        "image": "images/pet7.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner7",
+            "contact": "owner7@example.com",
+            "phone": "+91-9000000007"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Gully boy",
+        "type": "Cat",
+        "breed": "Maine Coon",
+        "age": "1 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "13 kg",
+        "location": "Delhi",
+        "vaccinated": true,
+        "neutered": true,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly cat looking for a caring family.",
+        "image": "images/pet8.jpg",
+        "status": "adopted",
+        "owner": {
+            "name": "Owner8",
+            "contact": "owner8@example.com",
+            "phone": "+91-9000000008"
+        }
+    },
+    {
+        "id": 9,
+        "name": "Goldie",
+        "type": "Lovebird",
+        "breed": "Fischer's",
+        "age": "2 years",
+        "gender": "Female",
+        "color": "Golden",
+        "weight": "1.1 kg",
+        "location": "Hyderabad",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly lovebird looking for a caring family.",
+        "image": "images/pet9.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner9",
+            "contact": "owner9@example.com",
+            "phone": "+91-9000000009"
+        }
+    },
+    {
+        "id": 10,
+        "name": "General",
+        "type": "Dog",
+        "breed": "German Shepherd",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "Grey",
+        "weight": "15 kg",
+        "location": "Mumbai",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "Needs daily medication",
+        "description": "A friendly dog looking for a caring family.",
+        "image": "images/pet10.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner10",
+            "contact": "owner10@example.com",
+            "phone": "+91-9000000010"
+        }
+    },
+    {
+        "id": 11,
+        "name": "Whiskers",
+        "type": "Cat",
+        "breed": "Persian",
+        "age": "4 years",
+        "gender": "Female",
+        "color": "Orange",
+        "weight": "16 kg",
+        "location": "Kolkata",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly cat looking for a caring family.",
+        "image": "images/pet11.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner11",
+            "contact": "owner11@example.com",
+            "phone": "+91-9000000011"
+        }
+    },
+    {
+        "id": 12,
+        "name": "Cookie",
+        "type": "Lovebird",
+        "breed": "Fischer's",
+        "age": "5 years",
+        "gender": "Male",
+        "color": "White",
+        "weight": "0.1 kg",
+        "location": "Bangalore",
+        "vaccinated": false,
+        "neutered": true,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly lovebird looking for a caring family.",
+        "image": "images/pet12.jpg",
+        "status": "adopted",
+        "owner": {
+            "name": "Owner12",
+            "contact": "owner12@example.com",
+            "phone": "+91-9000000012"
+        }
+    },
+    {
+        "id": 13,
+        "name": "Peanut",
+        "type": "Dog",
+        "breed": "Beagle",
+        "age": "6 years",
+        "gender": "Female",
+        "color": "Black",
+        "weight": "18 kg",
+        "location": "Chennai",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly dog looking for a caring family.",
+        "image": "images/pet13.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner13",
+            "contact": "owner13@example.com",
+            "phone": "+91-9000000013"
+        }
+    },
+    {
+        "id": 14,
+        "name": "Albert",
+        "type": "Cat",
+        "breed": "Bengal",
+        "age": "7 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "19 kg",
+        "location": "Delhi",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly cat looking for a caring family.",
+        "image": "images/pet14.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner14",
+            "contact": "owner14@example.com",
+            "phone": "+91-9000000014"
+        }
+    },
+    {
+        "id": 15,
+        "name": "Bella",
+        "type": "Cat",
+        "breed": "Maine Coon",
+        "age": "8 years",
+        "gender": "Female",
+        "color": "White",
+        "weight": "1.1 kg",
+        "location": "Hyderabad",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "Needs daily medication",
+        "description": "A friendly cat looking for a caring family.",
+        "image": "images/pet15.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner15",
+            "contact": "owner15@example.com",
+            "phone": "+91-9000000015"
+        }
+    },
+    {
+        "id": 16,
+        "name": "Bruno",
+        "type": "Dog",
+        "breed": "Bulldog",
+        "age": "1 years",
+        "gender": "Male",
+        "color": "Grey",
+        "weight": "21 kg",
+        "location": "Mumbai",
+        "vaccinated": true,
+        "neutered": true,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly dog looking for a caring family.",
+        "image": "images/pet16.jpg",
+        "status": "adopted",
+        "owner": {
+            "name": "Owner16",
+            "contact": "owner16@example.com",
+            "phone": "+91-9000000016"
+        }
+    },
+    {
+        "id": 17,
+        "name": "Simon",
+        "type": "Dog",
+        "breed": "Labrador",
+        "age": "2 years",
+        "gender": "Female",
+        "color": "White",
+        "weight": "22 kg",
+        "location": "Kolkata",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly lab looking for a caring family.",
+        "image": "images/pet17.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner17",
+            "contact": "owner17@example.com",
+            "phone": "+91-9000000017"
+        }
+    },
+    {
+        "id": 18,
+        "name": "Hunter",
+        "type": "Dog",
+        "breed": "German Shepherd",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "0.1 kg",
+        "location": "Hyderabad",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "Hunter Vantaaru choodu da",
+        "image": "images/pet18.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner18",
+            "contact": "owner18@example.com",
+            "phone": "+91-9000000018"
+        }
+    },
+    {
+        "id": 19,
+        "name": "Coolie",
+        "type": "Dog",
+        "breed": "Beagle",
+        "age": "4 years",
+        "gender": "Female",
+        "color": "Black",
+        "weight": "24 kg",
+        "location": "Chennai",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly dog looking for a caring family.",
+        "image": "images/pet19.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Owner19",
+            "contact": "owner19@example.com",
+            "phone": "+91-9000000019"
+        }
+    },
+    {
+        "id": 20,
+        "name": "Kaaleesha",
+        "type": "Cat",
+        "breed": "Sphynx",
+        "age": "5 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "5 kg",
+        "location": "Delhi",
+        "vaccinated": true,
+        "neutered": true,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "Needs daily medication",
+        "description": "A friendly cat looking for a caring family.",
+        "image": "images/pet20.jpg",
+        "status": "adopted",
+        "owner": {
+            "name": "Owner20",
+            "contact": "owner20@example.com",
+            "phone": "+91-9000000020"
+        }
+    },
+    {
+        "id": 21,
+        "name": "Sheru",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "12 kg",
+        "location": "Hyderabad",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly stray dog looking for a caring family.",
+        "image": "images/pet21.png",
+        "status": "available"
+    },
+    {
+        "id": 22,
+        "name": "Kaalu",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "4 years",
+        "gender": "Male",
+        "color": "Black",
+        "weight": "14 kg",
+        "location": "Mumbai",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A loving stray dog looking for a safe home.",
+        "image": "images/pet22.png",
+        "status": "available"
+    },
+    {
+        "id": 23,
+        "name": "Raju",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "2 years",
+        "gender": "Male",
+        "color": "Golden",
+        "weight": "11 kg",
+        "location": "Delhi",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A playful stray dog in need of love and care.",
+        "image": "images/pet23.png",
+        "status": "available"
+    },
+    {
+        "id": 24,
+        "name": "Tuffy",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "5 years",
+        "gender": "Male",
+        "color": "Brown & White",
+        "weight": "13 kg",
+        "location": "Bangalore",
+        "vaccinated": false,
+        "neutered": true,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A calm stray dog hoping for a warm home.",
+        "image": "images/pet24.png",
+        "status": "available"
+    },
+    {
+        "id": 25,
+        "name": "Moti",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "6 years",
+        "gender": "Male",
+        "color": "Golden",
+        "weight": "15 kg",
+        "location": "Chennai",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A gentle stray dog waiting for adoption.",
+        "image": "images/pet25.png",
+        "status": "available"
+    },
+    {
+        "id": 26,
+        "name": "Chintu",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "3 years",
+        "gender": "Male",
+        "color": "Black & White",
+        "weight": "10 kg",
+        "location": "Kolkata",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A playful stray dog who loves human company.",
+        "image": "images/pet26.png",
+        "status": "available"
+    },
+    {
+        "id": 27,
+        "name": "Bholu",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "4 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "12 kg",
+        "location": "Hyderabad",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A loving stray dog looking for a second chance.",
+        "image": "images/pet27.png",
+        "status": "available"
+    },
+    {
+        "id": 28,
+        "name": "Simba",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "5 years",
+        "gender": "Male",
+        "color": "Grey",
+        "weight": "14 kg",
+        "location": "Mumbai",
+        "vaccinated": true,
+        "neutered": true,
+        "friendlyWith": [
+            "Kids",
+            "Adults"
+        ],
+        "specialNeeds": "None",
+        "description": "A loyal stray dog hoping for a loving family.",
+        "image": "images/pet28.png",
+        "status": "available"
+    },
+    {
+        "id": 29,
+        "name": "Rocky",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "6 years",
+        "gender": "Male",
+        "color": "Golden",
+        "weight": "13 kg",
+        "location": "Delhi",
+        "vaccinated": true,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A friendly stray dog looking for a safe home.",
+        "image": "images/pet29.png",
+        "status": "available"
+    },
+    {
+        "id": 30,
+        "name": "Sultan",
+        "type": "Dog",
+        "breed": "Desi Dog",
+        "age": "7 years",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "15 kg",
+        "location": "Bangalore",
+        "vaccinated": false,
+        "neutered": false,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "None",
+        "description": "A calm and friendly stray dog waiting for adoption.",
+        "image": "images/pet30.png",
+        "status": "available"
+    },
+    {
+        "id": 31,
+        "name": "Choco",
+        "type": "Dog",
+        "breed": "Desi dog",
+        "age": "5 months",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "2",
+        "location": "Chennai",
+        "vaccinated": false,
+        "neutered": true,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "nil",
+        "description": "A cute indian stray puppy looking for a loving home in chennai",
+        "image": "images/choco.jpg",
+        "status": "found",
+        "owner": {
+            "name": "Surya",
+            "contact": "suryakpofficial@gmail.com",
+            "phone": "6369475743"
+        }
+    },
+    {
+        "id": 32,
+        "name": "Kou",
+        "type": "Cat",
+        "breed": "Persian",
+        "age": "2",
+        "gender": "Female",
+        "color": "White",
+        "weight": "3",
+        "location": "Chennai",
+        "vaccinated": true,
+        "neutered": true,
+        "friendlyWith": [
+            "Everyone"
+        ],
+        "specialNeeds": "",
+        "description": "A cute yet beautiful white persian cat who is very calm and playful in nature deserves a loving home, looking for adopters from tambaram",
+        "image": "images/kou.jpg",
+        "status": "available",
+        "owner": {
+            "name": "Koushik Vishal",
+            "contact": "ks4917@srmist.edu.in",
+            "phone": "7305428010"
+        }
+    },
+    {
+        "id": 33,
+        "name": "muthu",
+        "type": "Stray",
+        "breed": "Desi dog",
+        "age": "2",
+        "gender": "Male",
+        "color": "Brown",
+        "weight": "4",
+        "location": "SRMIST",
+        "vaccinated": false,
+        "neutered": true,
+        "friendlyWith": [],
+        "specialNeeds": "nil",
+        "description": "A friendly doggy found at SRMIST's chemistry lab",
+        "image": "images/WhatsApp Image 2025-09-09 at 9.13.11 AM.jpeg",
+        "status": "available",
+        "owner": {
+            "name": "Rajvi",
+            "contact": "ks4917@srmist.edu.in",
+            "phone": "7305428010"
+        }
+    }
+]
