@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building Pawfect Match...'
+                sh 'python --version'  // Check Flask setup
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing app...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying green version...'  // Blue-green placeholder
+            }
+        }
+    }
+}
+
