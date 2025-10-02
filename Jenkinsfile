@@ -14,10 +14,12 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                echo 'Testing app...'
-            }
-        }
+    steps {
+        echo 'Running automated tests...'
+        bat 'pip install pytest pytest-flask'
+        bat 'pytest test_app.py -v'
+    }
+}
         stage('Deploy') {
             steps {
                 echo 'Deploying blue-green...'
