@@ -1,9 +1,10 @@
 from flask import Flask, send_from_directory, request, redirect, url_for
 import json
+import os
 
 app = Flask(__name__, static_folder='')
 
-DATA_FILE = 'dpets.json'
+app = Flask(__name__, static_folder='.', static_url_path='')
 
 # Serve HTML pages
 @app.route('/')
