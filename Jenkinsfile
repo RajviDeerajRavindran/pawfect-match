@@ -14,19 +14,28 @@ pipeline {
             }
         }
         stage('Test') {
-    steps {
-        echo 'Running automated tests...'
-        bat 'pip install pytest pytest-flask'
-        bat 'pytest test_app.py -v'
-    }
-}
-        stage('Deploy') {
             steps {
-                echo 'Deploying blue-green...'
-                bat 'docker stop pawfect-blue || exit 0'
-                bat 'docker rm pawfect-blue || exit 0'
-                bat 'docker run -d --name pawfect-blue -p 5000:5000 pawfect-match:latest'
-                echo 'Application deployed to http://localhost:5000'
+                echo 'Running automated tests...'
+                bat 'pip install pytest pytest-flask'
+                bat 'pytest test_app.py -v'
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                echo 'Deploying to STAGING environment...'
+                bat 'docker stop pawfect-staging || exit 0'
+                bat 'docker rm pawfect-staging || exit 0'
+                bat 'docker run -d --name pawfect-staging -p 5001:5000 pawfect-match:latest'
+                echo 'Staging environment deployed to http://localhost:5001'
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo 'Deploying to PRODUCTION environment (Blue-Green)...'
+                bat 'docker stop pawfect-production || exit 0'
+                bat 'docker rm pawfect-production || exit 0'
+                bat 'docker run -d --name pawfect-production -p 5000:5000 pawfect-match:latest'
+                echo 'Production environment deployed to http://localhost:5000'
             }
         }
     }
