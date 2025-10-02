@@ -1,0 +1,455 @@
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f8f1e4; /* beige background */
+    color: #5a4032; /* dark brown text */
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #e6d5b8; /* light beige */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo container to include logo image and text */
+header .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between logo and text */
+}
+
+header .logo-container .logo {
+    height: 60px; /* your existing logo size */
+}
+
+header .logo-container .logo-text {
+    font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif; /* cute and friendly style */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #8B5E3C; /* brown tone to match theme */
+}
+
+/* Navigation links */
+header nav a {
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #c97f60;
+}
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f4e6d2;
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-img {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 20px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-text {
+    max-width: 600px;
+    margin-top: 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.hero-buttons .btn {
+    background-color: #c97f60;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    background-color: #5a4032;
+    transform: scale(1.05);
+}
+
+/* Mission Section */
+.mission {
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.mission h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.mission p {
+    font-size: 1.1rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Fun Facts */
+.fun-facts {
+    background-color: #e6d5b8;
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.fun-facts h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.fun-facts ul {
+    list-style: none;
+}
+
+.fun-facts li {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding-left: 25px;
+}
+
+.fun-facts li::before {
+    content: "🐾";
+    position: absolute;
+    left: 0;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.testimonial-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background-color: #f4e6d2;
+    padding: 1rem;
+    border-radius: 15px;
+    max-width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.testimonial-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #5a4032;
+    color: #f8f1e4;
+    text-align: center;
+    padding: 2rem 5%;
+}
+
+footer a {
+    color: #f8f1e4;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #c97f60;
+}
+
+.social-links a {
+    margin: 0 0.5rem;
+}
+
+.storyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center the entire column */
+    gap: 4rem;
+    padding: 3rem 5%;
+    background-color: #f7f1e5; /* light beige background */
+}
+
+.story-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* center horizontally */
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+}
+
+.story-item.reverse {
+    flex-direction: row-reverse; /* alternate layout */
+}
+
+.story-item img {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.story-item img:hover {
+    transform: scale(1.05); /* subtle hover zoom */
+}
+
+.story-text {
+    max-width: 600px;
+    text-align: center; /* center the text */
+}
+
+.story-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #7d4c32; /* brownish title */
+}
+
+.story-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #5a3e2b; /* darker brown for readability */
+}
+
+.hero-strays {
+    background: url('stray-hero.jpg') center/cover no-repeat;
+    padding: 6rem 2rem;
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    text-align: center;
+    color: #7d4c32; /* make text visible if background is dark */
+}
+
+.hero-strays .hero-text h1 {
+    font-size: 8rem;
+    margin-bottom: 1rem;
+    color: #7d4c32; /* light beige text */
+}
+
+.hero-strays .hero-text p {
+    font-size:  5rem;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.lostfound-hero {
+    background: url('../images/lostfound-hero.jpg') center/cover no-repeat;
+    padding: 6rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #4b3b2a; /* dark brown text */
+}
+
+.lostfound-hero .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.lostfound-hero .hero-text p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Lost/Found Form */
+.lostfound-form {
+    max-width: 700px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: #f5eee6;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.lostfound-form h2 {
+    margin-bottom: 1rem;
+    color: #8b5e3c;
+}
+
+.lostfound-form .info-text {
+    font-size: 0.95rem;
+    color: #5a4a3c;
+    margin-bottom: 2rem;
+}
+
+.lostfound-form input,
+.lostfound-form select,
+.lostfound-form textarea {
+    width: 90%;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    border-radius: 6px;
+    border: 1px solid #d4bca3;
+    font-size: 1rem;
+}
+
+.lostfound-form button.btn {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background-color: #c97f60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.lostfound-form button.btn:hover {
+    background-color: #b86c4b;
+}
+
+/* Pet card grid */
+.pets-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* center the cards */
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* Individual pet cards */
+.pet-card {
+    width: 220px; /* fixed width for all cards */
+    text-align: center;
+    border: 1px solid #d9cbb3;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #fffaf0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Pet images inside cards */
+.pet-card img {
+    width: 100%;      /* image fits card width */
+    height: 180px;    /* consistent height */
+    object-fit: cover; /* maintain aspect ratio, crop if needed */
+    border-radius: 10px;
+}
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #f8f1e4;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    animation: modalFade 0.4s;
+}
+
+@keyframes modalFade {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #5a4032;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+    .testimonial-cards {
+        flex-direction: column;
+    }
+}
