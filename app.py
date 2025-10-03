@@ -1,15 +1,19 @@
 from flask import Flask, send_from_directory, request, redirect, url_for
 import json
 import os
-
-app = Flask(__name__, static_folder='')
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__, static_folder='.', static_url_path='')
+metrics = PrometheusMetrics(app)
 
 # Serve HTML pages
 @app.route('/')
 def index():
     return send_from_directory('', 'index.html')
+
+@app.route('/health')
+def health_check():
+    return 'OK', 200
 
 @app.route('/adopt.html')
 def adopt():
@@ -95,3 +99,8 @@ def submit_pet():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
 
+if __name__ == "__main__":
+    print("Registered routes:")
+    for rule in app.url_map.iter_rules():
+        print(rule)
+    app.run(host="0.0.0.0", port=5000, debug=True)
