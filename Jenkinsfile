@@ -84,7 +84,29 @@ pipeline {
                 echo 'Deploying to PRODUCTION environment (Blue-Green)...'
                 bat 'docker stop pawfect-production || exit 0'
                 bat 'docker rm pawfect-production || exit 0'
-                bat "docker run -d --name pawf
+                bat 'docker run -d --name pawfect-production -p 5002:5000 pawfect-match:latest'
+                echo 'Production environment: http://localhost:5002'
+
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo '✅ Pipeline completed successfully!'
+            echo 'Kubernetes: minikube service pawfect-match-service'
+            echo 'Staging: http://localhost:5001'
+            echo 'Production: http://localhost:5000'
+        }
+        failure {
+            echo '❌ Pipeline failed. Check logs for details.'
+        }
+        always {
+            echo 'Pipeline execution finished.'
+        }
+    }
+}
+
 
 
 
