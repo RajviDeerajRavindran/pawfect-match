@@ -1,0 +1,62 @@
+---
+- name: Deploy Pawfect Match Application
+  hosts: local
+  become: false
+  
+  vars:
+    app_name: pawfect-match
+    docker_image: "{{ app_name }}:latest"
+    app_port: 5000
+    
+  tasks:
+    - name: Check if Docker is installed
+      command: docker --version
+      register: docker_version
+      changed_when: false
+      
+    - name: Display Docker version
+      debug:
+        msg: "Docker version: {{ docker_version.stdout }}"
+    
+    - name: Build Docker image
+      command: docker build -t {{ docker_image }} .
+      args:
+        chdir: ../
+      register: docker_build
+      
+    - name: Check if Minikube is running
+      command: minikube status
+      register: minikube_status
+      ignore_errors: true
+      changed_when: false
+      
+    - name: Display Minikube status
+      debug:
+        msg: "Minikube status: {{ minikube_status.stdout }}"
+    
+    - name: Load Docker image to Minikube
+      command: minikube image load {{ docker_image }}
+      when: minikube_status.rc == 0
+      
+    - name: Apply Kubernetes deployment
+      command: kubectl apply -f deployment.yaml
+      args:
+        chdir: ../
+      register: kubectl_deploy
+      
+    - name: Display deployment status
+      debug:
+        msg: "Deployment output: {{ kubectl_deploy.stdout }}"
+    
+    - name: Wait for pods to be ready
+      command: kubectl wait --for=condition=ready pod -l app={{ app_name }} --timeout=300s
+      register: pod_ready
+      
+    - name: Get pod status
+      command: kubectl get pods -l app={{ app_name }}
+      register: pod_status
+      changed_when: false
+      
+    - name: Display pod status
+      debug:
+        msg: "{{ pod_status.stdout_lines }}"

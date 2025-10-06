@@ -36,40 +36,7 @@ pipeline {
             }
         }
         
-        stage('Load to Minikube') {
-            steps {
-                echo 'Loading image to Minikube...'
-                bat "minikube image load ${DOCKER_IMAGE}:${DOCKER_TAG}"
-            }
-        }
-        
-        stage('Deploy to Kubernetes') {
-            steps {
-                echo 'Deploying to Kubernetes...'
-                bat 'kubectl apply -f deployment.yaml'
-                bat 'kubectl apply -f service.yaml'
-                bat 'kubectl rollout status deployment/pawfect-match-deployment'
-            }
-        }
-        
-        stage('Deploy Monitoring') {
-            steps {
-                echo 'Deploying monitoring stack...'
-                bat 'kubectl apply -f prometheus-config.yaml'
-                bat 'kubectl apply -f grafana.yaml'
-            }
-        }
-        
-        stage('Verify Deployment') {
-            steps {
-                echo 'Verifying deployment...'
-                bat 'kubectl get pods'
-                bat 'kubectl get services'
-                bat 'minikube service list'
-            }
-        }
-        
-        stage('Deploy to Staging (Docker)') {
+        stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to STAGING environment...'
                 bat 'docker stop pawfect-staging || exit 0'
@@ -79,14 +46,13 @@ pipeline {
             }
         }
         
-        stage('Deploy to Production (Docker)') {
+        stage('Deploy to Production') {
             steps {
-                echo 'Deploying to PRODUCTION environment (Blue-Green)...'
+                echo 'Deploying to PRODUCTION environment...'
                 bat 'docker stop pawfect-production || exit 0'
                 bat 'docker rm pawfect-production || exit 0'
-                bat 'docker run -d --name pawfect-production -p 5002:5000 pawfect-match:latest'
+                bat "docker run -d --name pawfect-production -p 5002:5000 ${DOCKER_IMAGE}:${DOCKER_TAG}"
                 echo 'Production environment: http://localhost:5002'
-
             }
         }
     }
@@ -94,9 +60,9 @@ pipeline {
     post {
         success {
             echo '✅ Pipeline completed successfully!'
-            echo 'Kubernetes: minikube service pawfect-match-service'
             echo 'Staging: http://localhost:5001'
-            echo 'Production: http://localhost:5000'
+            echo 'Production: http://localhost:5002'
+            echo 'Kubernetes: Deploy manually with kubectl apply -f deployment.yaml'
         }
         failure {
             echo '❌ Pipeline failed. Check logs for details.'
@@ -106,6 +72,7 @@ pipeline {
         }
     }
 }
+
 
 
 

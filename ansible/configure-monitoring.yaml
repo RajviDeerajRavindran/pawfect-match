@@ -1,0 +1,36 @@
+---
+- name: Configure Monitoring Stack
+  hosts: local
+  become: false
+  
+  tasks:
+    - name: Deploy Prometheus
+      command: kubectl apply -f prometheus-config.yaml
+      args:
+        chdir: ../
+      register: prometheus_deploy
+      ignore_errors: true
+      
+    - name: Deploy Grafana
+      command: kubectl apply -f grafana.yaml
+      args:
+        chdir: ../
+      register: grafana_deploy
+      ignore_errors: true
+      
+    - name: Wait for Prometheus to be ready
+      command: kubectl wait --for=condition=ready pod -l app=prometheus --timeout=300s
+      ignore_errors: true
+      
+    - name: Wait for Grafana to be ready
+      command: kubectl wait --for=condition=ready pod -l app=grafana --timeout=300s
+      ignore_errors: true
+      
+    - name: Get monitoring services
+      command: kubectl get services prometheus-service grafana-service
+      register: monitoring_services
+      changed_when: false
+      
+    - name: Display monitoring services
+      debug:
+        msg: "{{ monitoring_services.stdout_lines }}"

@@ -1,3 +1,7 @@
 flask
 pytest
 pytest-flask
+prometheus-client
+pip>=23.3
+setuptools>=78.1.1
+

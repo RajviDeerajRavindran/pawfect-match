@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  pawfect-production:
+    image: pawfect-match:latest
+    ports:
+      - 5000:5000
+  pawfect-staging:
+    image: pawfect-match:latest
+    ports:
+      - 5001:5000
