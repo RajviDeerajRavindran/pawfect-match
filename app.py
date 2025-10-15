@@ -3,7 +3,7 @@ import json
 import os
 from prometheus_client import Counter, Histogram, generate_latest, REGISTRY
 
-DATA_FILE = 'pets.json'
+DATA_FILE = 'dpets.json'
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 
