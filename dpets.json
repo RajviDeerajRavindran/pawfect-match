@@ -830,5 +830,28 @@
             "contact": "rajviravindran24@gmail.com",
             "phone": "9840963625"
         }
+    },
+    {
+        "id": 36,
+        "name": "Kelasick",
+        "type": "Stray",
+        "breed": "Unknow",
+        "age": "21",
+        "gender": "Male",
+        "color": "Black",
+        "weight": "65",
+        "location": "Chennai",
+        "vaccinated": true,
+        "neutered": true,
+        "friendlyWith": [],
+        "specialNeeds": "",
+        "description": "high always.",
+        "image": "images/download (1).jpg",
+        "status": "available",
+        "owner": {
+            "name": "Indrajith",
+            "contact": "rajviravindran24@gmail.com",
+            "phone": "6369475743"
+        }
     }
 ]

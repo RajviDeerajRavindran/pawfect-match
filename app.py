@@ -1,34 +1,10 @@
-from flask import Flask, send_from_directory, request, redirect, url_for, abort, Response
+from flask import Flask, send_from_directory, request, redirect, url_for
 import json
 import os
-from prometheus_client import Counter, Histogram, generate_latest, REGISTRY
 
-DATA_FILE = 'dpets.json'
+app = Flask(__name__, static_folder='')
 
-app = Flask(__name__, static_folder='static', static_url_path='/static')
-
-# Manual Prometheus metrics
-REQUEST_COUNT = Counter('http_requests_total', 'Total HTTP requests', ['method', 'endpoint'])
-REQUEST_LATENCY = Histogram('http_request_duration_seconds', 'HTTP request latency')
-
-@app.before_request
-def before_request():
-    request.start_time = __import__('time').time()
-
-@app.after_request
-def after_request(response):
-    request_latency = __import__('time').time() - request.start_time
-    REQUEST_LATENCY.observe(request_latency)
-    REQUEST_COUNT.labels(method=request.method, endpoint=request.endpoint or 'unknown').inc()
-    return response
-
-@app.route('/metrics')
-def metrics():
-    return Response(generate_latest(REGISTRY), mimetype='text/plain')
-
-@app.route('/health')
-def health_check():
-    return 'OK', 200
+DATA_FILE = os.path.join('static', 'dpets.json')
 
 # Serve HTML pages
 @app.route('/')
@@ -64,6 +40,12 @@ def js(filename):
 @app.route('/images/<path:filename>')
 def pet_images(filename):
     return send_from_directory('images', filename)
+
+@app.route('/<filename>')
+def root_images(filename):
+    if filename.endswith(('.jpg', '.png', '.jpeg', '.gif')):
+        return send_from_directory('', filename)
+    return "File not found", 404
 
 # Handle form submission
 @app.route('/submit_pet', methods=['POST'])
@@ -110,19 +92,7 @@ def submit_pet():
 
     return redirect(url_for('lostfound'))
 
-# IMPORTANT: Catch-all route MUST be LAST
-@app.route('/<filename>')
-def root_images(filename):
-    # ONLY serve if it has an image extension
-    if filename.endswith(('.jpg', '.png', '.jpeg', '.gif', '.webp', '.svg')):
-        return send_from_directory('', filename)
-    # Return 404 for anything else (don't catch /metrics)
-    abort(404)
-
-if __name__ == "__main__":
-    print("Registered routes:")
-    for rule in app.url_map.iter_rules():
-        print(rule)
-    app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
