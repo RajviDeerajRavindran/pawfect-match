@@ -1,20 +1,40 @@
-from flask import Flask, send_from_directory, request, redirect, url_for, abort
+from flask import Flask, send_from_directory, request, redirect, url_for, abort, Response
 import json
 import os
+from prometheus_client import Counter, Histogram, generate_latest, REGISTRY
 
-# Constants
-DATA_FILE = os.path.join('static', 'dpets.json')
+DATA_FILE = 'dpets.json'
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 # Ensure dpets.json exists
-if not os.path.exists(DATA_FILE):
-    os.makedirs('static', exist_ok=True)
+if not os.path.isfile(DATA_FILE):
     with open(DATA_FILE, 'w') as f:
         json.dump([], f)
 
-app = Flask(__name__, static_folder='static', static_url_path='/static')
+# Prometheus metrics
+REQUEST_COUNT = Counter('http_requests_total', 'Total HTTP requests', ['method', 'endpoint'])
+REQUEST_LATENCY = Histogram('http_request_duration_seconds', 'HTTP request latency')
 
+@app.before_request
+def before_request():
+    request.start_time = __import__('time').time()
 
-# Serve HTML pages (must be in root dir)
+@app.after_request
+def after_request(response):
+    request_latency = __import__('time').time() - request.start_time
+    REQUEST_LATENCY.observe(request_latency)
+    REQUEST_COUNT.labels(method=request.method, endpoint=request.endpoint or 'unknown').inc()
+    return response
+
+@app.route('/metrics')
+def metrics():
+    return Response(generate_latest(REGISTRY), mimetype='text/plain')
+
+@app.route('/health')
+def health_check():
+    return 'OK', 200
+
+# Serve HTML pages (ensure these files exist in your app root)
 @app.route('/')
 def index():
     return send_from_directory('.', 'index.html')
@@ -35,76 +55,78 @@ def lostfound():
 def about():
     return send_from_directory('.', 'about.html')
 
-# Serve CSS/JS
+# Serve CSS and JS
 @app.route('/css/<path:filename>')
 def css(filename):
-    return send_from_directory(os.path.join('static', 'css'), filename)
+    return send_from_directory('css', filename)
 
 @app.route('/js/<path:filename>')
 def js(filename):
-    return send_from_directory(os.path.join('static', 'js'), filename)
+    return send_from_directory('js', filename)
 
 # Serve images
 @app.route('/images/<path:filename>')
 def pet_images(filename):
-    return send_from_directory(os.path.join('static', 'images'), filename)
+    return send_from_directory('images', filename)
 
-# Catch common direct file/image access
-@app.route('/<filename>')
-def root_images(filename):
-    if filename.endswith(('.jpg', '.png', '.jpeg', '.gif')):
-        return send_from_directory('.', filename)
-    return "File not found", 404
-
-# Handle form submission and always update static/dpets.json
+# Handle form submission
 @app.route('/submit_pet', methods=['POST'])
 def submit_pet():
-    with open(DATA_FILE, 'r') as f:
-        try:
+    # Load pet list; create if file missing or empty
+    try:
+        with open(DATA_FILE, 'r') as f:
             pets = json.load(f)
-        except Exception:
-            pets = []
+    except (FileNotFoundError, json.JSONDecodeError):
+        pets = []
 
-    new_id = max((p.get('id', 0) for p in pets), default=0) + 1
+    new_id = max((p['id'] for p in pets), default=0) + 1
 
     # Optional: upload image if included
     img = request.files.get('image')
-    img_path = f'static/images/{img.filename}' if img else ''
+    img_path = f'images/{img.filename}' if img else ''
     if img:
-        os.makedirs(os.path.join('static', 'images'), exist_ok=True)
+        os.makedirs('images', exist_ok=True)
         img.save(img_path)
 
     new_pet = {
         "id": new_id,
-        "name": request.form.get('name', ''),
-        "type": request.form.get('type', ''),
-        "breed": request.form.get('breed', ''),
-        "age": request.form.get('age', ''),
-        "gender": request.form.get('gender', ''),
-        "color": request.form.get('color', ''),
-        "weight": request.form.get('weight', ''),
-        "location": request.form.get('location', ''),
+        "name": request.form['name'],
+        "type": request.form['type'],
+        "breed": request.form['breed'],
+        "age": request.form['age'],
+        "gender": request.form['gender'],
+        "color": request.form['color'],
+        "weight": request.form['weight'],
+        "location": request.form['location'],
         "vaccinated": 'vaccinated' in request.form,
         "neutered": 'neutered' in request.form,
         "friendlyWith": request.form.getlist('friendlyWith'),
-        "specialNeeds": request.form.get('specialNeeds', ''),
-        "description": request.form.get('description', ''),
+        "specialNeeds": request.form['specialNeeds'],
+        "description": request.form['description'],
         "image": img_path,
-        "status": request.form.get('status', ''),
+        "status": request.form['status'],
         "owner": {
-            "name": request.form.get('owner_name', ''),
-            "contact": request.form.get('owner_contact', ''),
-            "phone": request.form.get('owner_phone', '')
+            "name": request.form['owner_name'],
+            "contact": request.form['owner_contact'],
+            "phone": request.form['owner_phone']
         }
     }
     pets.append(new_pet)
-
     with open(DATA_FILE, 'w') as f:
         json.dump(pets, f, indent=4)
     return redirect(url_for('lostfound'))
 
-if __name__ == '__main__':
-    # Always bind to 0.0.0.0 for Docker/EC2
-   app.run(host="0.0.0.0", port=5000, debug=False)
+# Catch-all route for direct file access/images
+@app.route('/<filename>')
+def root_images(filename):
+    if filename.endswith(('.jpg', '.png', '.jpeg', '.gif', '.webp', '.svg')):
+        return send_from_directory('.', filename)
+    abort(404)
+
+if __name__ == "__main__":
+    print("Registered routes:")
+    for rule in app.url_map.iter_rules():
+        print(rule)
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
 
